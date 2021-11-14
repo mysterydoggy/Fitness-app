@@ -1,0 +1,120 @@
+#include <stdio.h>
+void greeting();
+void protein_intake(double *lbs);
+void general_information(double *lbs);
+void maintain_weight(double *lbs);
+
+int main()
+{
+    float kg;
+    int dog;
+    int *calorie_intake;
+    double *lbs;
+    double *protein;// pointer to store 
+    
+    greeting();
+    
+    printf("Enter your weight in kg. \n");
+    scanf("%f", &kg);
+    
+    printf("\nYour weight in lbs is %.2f\n", *lbs+=(2.2 * kg));
+    
+    while (dog != 4) //program will infinitely run until user input = 4
+    {
+        printf("\nWhat would you like to do today?\n");
+        printf("\n1. Show your optimal daily protein intake \n");
+        printf("2. Show your information.\n");
+        printf("3. Show how to maintain your current weight. \n ");
+        scanf("%d", &dog);
+        printf("---------------------------------------\n");
+    
+        switch(dog)
+        {
+           case 1: printf("You have chosen Protein intake.\n");
+                   protein_intake(lbs);
+               break;
+           case 2: printf("You have chosen to look at your information");
+                   general_information(lbs);
+               break;
+           case 3: printf("Your optimal daily calorie intake\n");
+                   maintain_weight(lbs);
+               break;
+            case 4: printf("Exit");
+        }
+    }
+}
+
+void greeting()
+{
+    int inches, feet;
+    double kg;
+
+    printf("---------------------------------------\n");
+    printf("Welcome to my fitness app!\n");
+    printf("---------------------------------------\n");
+}
+
+void protein_intake(double *lbs)
+{
+    double protein;
+    
+  protein = (*lbs * 0.36);
+  float protein_minimum, protein_maximum;
+  protein_minimum = (*lbs * 0.5);
+  protein_maximum = (*lbs * 0.8);
+  printf("---------------------------------------\n");
+  printf("\n The Recommended Dietary Allowance protein intake is %.1f\n", protein); 
+  
+  printf("If you are wanting to build muscle you should consume between %.1fg - %.1fg of protein daily", protein_minimum, protein_maximum);
+  
+}
+
+
+void general_information(double *lbs)
+{
+    
+    double kg; 
+    double protein_daily = (*lbs * 0.36);
+    int feet = 0;
+    int inches = 0;
+    if (feet < 1 && inches < 1)
+    {
+        printf("please enter your height in feet and inches: ");
+        scanf("%d %d", &feet, &inches);
+        
+        
+    }
+    
+    
+    printf("\nWeight in lbs: %.2f\n", *lbs);
+    printf("Height: %d'%d ", feet, inches);
+    printf("\nThe amount of protein you should consume daily is %.1f\n", protein_daily);
+}
+
+void maintain_weight(double *lbs)
+{
+    double kg;
+    int caloric_deficit = 0, caloric_surplus = 0, caloric_medium = 0, gain, option;
+  
+    caloric_medium = (*lbs * 15);
+    caloric_deficit = (caloric_medium - 500);
+    caloric_surplus = (caloric_medium + 500);
+    printf("Would you like to lose, gain, or maintain your weight?\n");
+    printf("1. Lose Weight\n");
+    printf("2. Maintain Weight\n");
+    printf("3. Gain Weight\n");
+    scanf("%d", &option);
+    
+    switch(option)
+    {
+        case 1: printf("\nYou should take around %d - %d calories daily to lose weight.\n", caloric_deficit, caloric_deficit - 300);
+            break;
+        case 2: printf("\nYou should take around %d calories to maintain your current weight\n", caloric_medium);
+            break;
+        case 3: printf("\nYou should take around %d - %d calories to slowly gain weight your current weight\n", caloric_surplus, caloric_surplus + 300);
+                printf("To gain weight at a quicker rate you should consume between %d - %d calories daily.\n", caloric_surplus + 700, caloric_surplus + 1000);
+    }
+    
+    
+    
+}
